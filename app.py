@@ -70,7 +70,7 @@ def settings():
         if request.method == 'POST':
             password = request.form['password']
             if password != "":
-                password = helpers.hash_password(password)
+                password = helpers.hash_password(password).decode('utf8')
             email = request.form['email']
             helpers.change_user(password=password, email=email)
             return json.dumps({'status': 'Saved'})
